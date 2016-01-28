@@ -49,8 +49,7 @@ public class Author
 	@Override
 	public String toString()
 	{
-		return "Author [firstName=" + firstName + ", lastName=" + lastName + ", image=" + image + ", book=" + book
-				+ "]";
+		return firstName + " " + lastName;
 	}
 
 	@Override

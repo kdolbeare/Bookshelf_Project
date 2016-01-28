@@ -10,14 +10,15 @@
 <title>Catalog</title>
 </head>
 <body>
-	<form action="GetAllBooks.do" method="GET">
+<!-- 	<form action="GetAllBooks.do" method="GET">
 		 <input type="submit" value="Get Book List" />
-	</form>
+	</form> -->
+	<h4>All Books</h4>
 	<c:choose>
 		<c:when test="${! empty book}">
 		<c:forEach var="book" items="${book}">
 			<table>
-			<tr><th colspan="2">All Books</th></tr>
+			<tr><th colspan="2">Book Information</th></tr>
 			<tbody>
 				<tr><td>Category:</td><td>${book.category}</td></tr>
 				<tr><td>Title:</td><td>${book.title}</td></tr>
