@@ -5,9 +5,13 @@
 <title>Bookshelf</title>
 </head>
 <body>
-<!-- <a href="form.jsp">Get Catalog</a><br/> -->
-	<form action="GetAllBooks.do" method="GET">
-		 <input type="submit" value="Get Book List" />
+	<header>
+	<a href="listBooks.do">List Books</a>
+	<a href="newBook.jsp">Add Book</a>	
+	</header>	
+	<form action="getByTitle.do" method="GET">
+		 <input type="text" placeholder="Enter Title" name="title"> 
+		 <button type="submit" value="submit" name="submit">Search Shelf</button>
 	</form>
 </body>
 </html>

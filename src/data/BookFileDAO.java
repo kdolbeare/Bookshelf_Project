@@ -51,9 +51,15 @@ public class BookFileDAO implements BookDAO
 	
 	
 	@Override
-	public Book getBookTitle(String title)
+	public Book getBookByTitle(String title)
 	{
-		// TODO Auto-generated method stub
+		for (Book book : books)
+		{
+			if(book.getTitle().trim().equalsIgnoreCase(title.trim()))
+				return book;
+			else if (book.getTitle().toLowerCase().contains(title.toLowerCase().trim()))
+				return book;
+		}
 		return null;
 	}
 
@@ -61,6 +67,12 @@ public class BookFileDAO implements BookDAO
 	public List<Book> getAllBooks()
 	{
 		return books;
+	}
+	
+	@Override
+	public void addBook(Book book)
+	{
+		books.add(book);
 	}
 
 }

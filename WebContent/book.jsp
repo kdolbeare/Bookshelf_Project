@@ -10,10 +10,13 @@
 <title>Catalog</title>
 </head>
 <body>
-	<h4>All Books</h4>
+	<form action="getByTitle.do" method="GET">
+		 <input type="text" placeholder="Enter Title" name="title"> 
+		 <button type="submit" value="submit" name="submit">Search Shelf</button>
+	</form>
 	<c:choose>
 		<c:when test="${! empty book}">
-		<c:forEach var="book" items="${book}">
+		<c:forEach var="book" items="${catalog}">
 			<table>
 			<tr><th colspan="2"></th></tr>
 			<tbody>
