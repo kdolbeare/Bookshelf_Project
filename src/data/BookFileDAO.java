@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeSet;
 
 import javax.annotation.PostConstruct;
 
@@ -14,7 +15,7 @@ import org.springframework.context.ApplicationContext;
 public class BookFileDAO implements BookDAO
 {
 	private static final String FILENAME = "WEB-INF/library.csv";
-	private List<Book> books = new ArrayList<>();
+	private TreeSet<Book> books = new TreeSet<>();
 	
 	@Autowired
 	private ApplicationContext ac;
@@ -51,20 +52,32 @@ public class BookFileDAO implements BookDAO
 	
 	
 	@Override
-	public Book getBookByTitle(String title)
+	public TreeSet<Book> getBookByTitle(String title)
 	{
+		TreeSet<Book> b = new TreeSet<>();
 		for (Book book : books)
 		{
-			if(book.getTitle().trim().equalsIgnoreCase(title.trim()))
-				return book;
-			else if (book.getTitle().toLowerCase().contains(title.toLowerCase().trim()))
-				return book;
+//			if(book.getTitle().trim().equalsIgnoreCase(title.trim()))
+			if (book.getTitle().toLowerCase().contains(title.toLowerCase().trim()))
+				b.add(book);
+				
 		}
+		return b;
+	}
+	@Override
+	public Book getOneBookByTitle(String title)
+	{
+		for (Book book : books)
+	{
+//		if(book.getTitle().trim().equalsIgnoreCase(title.trim()))
+		if (book.getTitle().toLowerCase().contains(title.toLowerCase().trim()))
+			return book;			
+	}
 		return null;
 	}
 
 	@Override
-	public List<Book> getAllBooks()
+	public TreeSet<Book> getAllBooks()
 	{
 		return books;
 	}
@@ -74,5 +87,14 @@ public class BookFileDAO implements BookDAO
 	{
 		books.add(book);
 	}
-
+	@Override
+	public void deleteBook(Book book)
+	{
+		if (books.contains(book))
+			books.remove(book);
+		else {
+			//something?
+		}
+			
+	}
 }

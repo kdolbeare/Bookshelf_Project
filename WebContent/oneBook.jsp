@@ -10,10 +10,9 @@
 <title>Catalog</title>
 </head>
 <body>
-	<h4>All Books</h4>
+	<h4>Updated Book</h4>
 	<c:choose>
 		<c:when test="${! empty book}">
-		<c:forEach var="book" items="${book}">
 			<table>
 			<tr><th colspan="2"></th></tr>
 			<tbody>
@@ -24,10 +23,9 @@
 			</tbody>
 			</table>
 			<form action="editBook.do" method=GET>
-			<input type="hidden" name="title" value="${book.title}">
+			<input type="hidden" name="title" value="${book.title}">			
 			<input type="submit" value="edit">
 			</form>
-			</c:forEach>
 		</c:when>
 		<c:otherwise>
 			<p>No book found</p>

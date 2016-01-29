@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,14 +10,12 @@
 </head>
 <body>
 	<h3>Add a New Book</h3>
-	<!-- ask Jamie about the author -->
 	<form action="newBook.do" method="POST">
-		Title:
-		<input type="text" name="title"><br/>
-		Author fName:
-		<input type="text" name="firstName"/><br/>
-		Author lName: 
-		<input type="text" name="lastName"/><br/>
+		<input type="text" name="title" value="Title"><br/>
+		<input type="text" name="firstName" value="First Name"/><br/>
+		<input type="text" name="lastName" value="Last Name"/><br/>
+		<input type="text" name="numISBN" value="ISBN"/><br/>
+		
 		<input type="submit" value="Add Book" />
 	</form>
 

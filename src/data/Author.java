@@ -7,6 +7,11 @@ public class Author
 	private String image;
 	private Book book;
 	
+	public Author()
+	{
+		
+	}
+	
 	public Author(String firstName, String lastName)
 	{
 		this.firstName=firstName;
@@ -52,17 +57,17 @@ public class Author
 		return firstName + " " + lastName;
 	}
 
-	@Override
-	public int hashCode()
-	{
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((book == null) ? 0 : book.hashCode());
-		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
-		result = prime * result + ((image == null) ? 0 : image.hashCode());
-		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
-		return result;
-	}
+//	@Override
+//	public int hashCode()
+//	{
+//		final int prime = 31;
+//		int result = 1;
+//		result = prime * result + ((book == null) ? 0 : book.hashCode());
+//		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
+//		result = prime * result + ((image == null) ? 0 : image.hashCode());
+//		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
+//		return result;
+//	}
 
 	@Override
 	public boolean equals(Object obj)

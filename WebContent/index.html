@@ -6,8 +6,15 @@
 </head>
 <body>
 	<header>
-	<a href="listBooks.do">List Books</a>
-	<a href="newBook.jsp">Add Book</a>	
+	<ul>
+		<li><a href="listBooks.do">List Books</a></li>
+		<li><a href="newBook.jsp">Add Book</a></li>
+		<li><a href="deleteBook.jsp">Delete Book</a></li>
+		<!-- <li><a href="editBook.do?title=A+Beautiful+Mind">Edit Book</a></li> -->
+		<li><a href="listBooks.do">Edit Books</a></li>
+		
+		
+	</ul>	
 	</header>	
 	<form action="getByTitle.do" method="GET">
 		 <input type="text" placeholder="Enter Title" name="title"> 

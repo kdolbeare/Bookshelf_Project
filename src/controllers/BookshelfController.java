@@ -1,8 +1,8 @@
 package controllers;
 
-import java.util.ArrayList;
-import java.util.HashSet;
+
 import java.util.List;
+import java.util.TreeSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import data.Author;
 import data.Book;
 import data.BookDAO;
 
@@ -24,9 +25,9 @@ public class BookshelfController
 	private BookDAO bookDAO;
 	
 	@ModelAttribute("catalog")
-	public HashSet<Book> initSessionBook()
+	public TreeSet<Book> initSessionBook()
 	{
-		HashSet<Book> list = new HashSet<>();
+		TreeSet<Book> list = new TreeSet<>();
 		return list;
 	}
 	
@@ -39,25 +40,62 @@ public class BookshelfController
 		return mv;
 	}
 	@RequestMapping(path = "getByTitle.do", params = "title", method = RequestMethod.GET)
-	public ModelAndView findBookByTitle(@RequestParam("title") String t, @ModelAttribute("catalog") HashSet<Book> list)
+	public ModelAndView findBookByTitle(@RequestParam("title") String t, @ModelAttribute("catalog") TreeSet<Book> list)
 	{
-		Book b = bookDAO.getBookByTitle(t);
-		list.add(b);
+		TreeSet<Book> b = bookDAO.getBookByTitle(t);
+		list.addAll(b);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("book.jsp");
 		mv.addObject("book",bookDAO.getBookByTitle(t));
 		return mv;
 	}
 	@RequestMapping(path="newBook.do", method=RequestMethod.POST)
-	public ModelAndView newBook (Book book, @ModelAttribute("catalog") HashSet<Book> list)
+	public String newBook (Book book, Author author, @ModelAttribute("catalog") TreeSet<Book> list)
 	{
-		//there's another annotation??
+		book.setAuthor(author);
+		author.setBook(book);
 		bookDAO.addBook(book);
 		list.add(book);
+		//ModelAndView mv = new ModelAndView();
+		//mv.setViewName("book.jsp");
+		return "book.jsp";
+	}
+	@RequestMapping(path="deleteBook.do", params="title", method=RequestMethod.GET)
+	public String deleteBook (@RequestParam("title") String t,@ModelAttribute("catalog") TreeSet<Book> list)
+	{
+		//System.out.println(bookDAO.getBookByTitle(t));
+		list.remove(bookDAO.getOneBookByTitle(t));
+		bookDAO.deleteBook(bookDAO.getOneBookByTitle(t));
+		return "deleteBook.jsp";
+	}
+	@RequestMapping(path="editBook.do", params="title", method=RequestMethod.GET)
+	public ModelAndView editBook (@RequestParam("title") String t)
+	{
+		Book b = (bookDAO.getOneBookByTitle(t));
+//		Book b = new Book("Test");
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("book.jsp");
+		mv.setViewName("editBook.jsp");
+		mv.addObject("book", b);
 		return mv;
 	}
+	//need to add another method to updateBook from the edit page
+	@RequestMapping(path="editBook.do", method=RequestMethod.POST)
+	public ModelAndView updateBook (@RequestParam("title") String t, @RequestParam("firstName") String f, 
+			@RequestParam("lastName") String l, @RequestParam("numISBN") String n, @ModelAttribute("catalog") TreeSet<Book> list)
+	{	
+		//System.out.println(t + f+ l + n);
+		Book b = new Book();
+		b.setTitle(t);
+		b.setNumISBN(n);
+		Author a = new Author(f,l);
+		b.setAuthor(a);		
+		bookDAO.addBook(b);
+		list.add(b);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("oneBook.jsp");
+		mv.addObject("book", b);
+		return mv;
 	
-
+		
+	}
 }

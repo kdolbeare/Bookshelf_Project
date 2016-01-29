@@ -1,10 +1,13 @@
 package data;
 
 import java.util.List;
+import java.util.TreeSet;
 
-public interface BookDAO
+public interface BookDAO 
 {
-	public Book getBookByTitle (String title);
-	public List<Book> getAllBooks();
+	public TreeSet<Book> getBookByTitle (String title);
+	public TreeSet<Book> getAllBooks();
 	public void addBook(Book book);
+	public void deleteBook(Book book);
+	public Book getOneBookByTitle(String title);
 }
