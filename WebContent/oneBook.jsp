@@ -10,6 +10,16 @@
 <title>Catalog</title>
 </head>
 <body>
+<header>
+	<div class="logo">
+	<a href="index.html">Bookshelf</a>
+	</div>
+	<ul>
+		<li><a href="listBooks.do">List Books</a></li>
+		<li><a href="newBook.jsp">Add Book</a></li>
+		<li><a href="deleteBook.jsp">Delete Book</a></li>
+		<li><a href="listBooks.do">Edit Books</a></li>	
+	</ul>	
 	<h4>Updated Book</h4>
 	<c:choose>
 		<c:when test="${! empty book}">

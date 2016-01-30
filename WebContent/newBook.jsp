@@ -9,12 +9,29 @@
 <title>New Book</title>
 </head>
 <body>
+<header>
+<div class="logo">
+	<a href="index.html">Bookshelf</a>
+	</div>
+	<ul>
+		<li><a href="listBooks.do">List Books</a></li>
+		<li><a href="newBook.jsp">Add Book</a></li>
+		<li><a href="deleteBook.jsp">Delete Book</a></li>
+		<li><a href="listBooks.do">Edit Books</a></li>		
+	</ul>	
+	</header>
 	<h3>Add a New Book</h3>
 	<form action="newBook.do" method="POST">
-		<input type="text" name="title" value="Title"><br/>
-		<input type="text" name="firstName" value="First Name"/><br/>
-		<input type="text" name="lastName" value="Last Name"/><br/>
-		<input type="text" name="numISBN" value="ISBN"/><br/>
+		<select name="title">
+		<c:forEach var="book" items="${book}">
+			<option value="${book.title}">${book.category}</option>
+		</c:forEach></select><br/>
+		
+		
+		<input type="text" name="title" placeholder="Title"><br/>
+		<input type="text" name="firstName" placeholder="First Name"/><br/>
+		<input type="text" name="lastName" placeholder="Last Name"/><br/>
+		<input type="text" name="numISBN" placeholder="10 digit ISBN"/><br/>
 		
 		<input type="submit" value="Add Book" />
 	</form>

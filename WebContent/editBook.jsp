@@ -9,12 +9,23 @@
 <title>Edit Book</title>
 </head>
 <body>
+<header>
+<div class="logo">
+	<a href="index.html">Bookshelf</a>
+	</div>
+	<ul>
+		<li><a href="listBooks.do">List Books</a></li>
+		<li><a href="newBook.jsp">Add Book</a></li>
+		<li><a href="deleteBook.jsp">Delete Book</a></li>
+		<li><a href="listBooks.do">Edit Books</a></li>		
+	</ul>	
+	</header>
 	<h3>Edit a Book</h3>
 	<form action="editBook.do" method="POST">
 		<table>
 			<tr>
 				<td>Title: <input name="title" value="${book.title}"/></td>
-				<td>Title: <input type="hidden" name="originalTitle" value="${book.title}"/></td>
+				<td><input type="hidden" name="originalTitle" value="${book.title}"/></td>
 			</tr>
 			<tr>
 				<td>Author's first name:<input name="firstName" value="${book.author.firstName}" /></td>

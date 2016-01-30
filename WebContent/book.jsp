@@ -10,6 +10,16 @@
 <title>Catalog</title>
 </head>
 <body>
+<header>
+	<div class="logo">
+	<a href="index.html">Bookshelf</a>
+	</div>
+	<ul>
+		<li><a href="listBooks.do">List Books</a></li>
+		<li><a href="newBook.jsp">Add Book</a></li>
+		<li><a href="deleteBook.jsp">Delete Book</a></li>
+		<li><a href="listBooks.do">Edit Books</a></li>	
+	</ul>	
 	<form action="getByTitle.do" method="GET">
 		 <input type="text" placeholder="Enter Title" name="title"> 
 		 <button type="submit" value="submit" name="submit">Search Shelf</button>

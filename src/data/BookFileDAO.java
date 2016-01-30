@@ -110,10 +110,7 @@ public class BookFileDAO implements BookDAO
 	@Override
 	public void deleteBook(Book book)
 	{
-		if (books.contains(book))
+		if (books.contains(book))		
 			books.remove(book);
-		else {
-			//something?
-		}			
 	}
 }

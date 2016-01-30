@@ -10,6 +10,20 @@
 <title>Catalog</title>
 </head>
 <body>
+	<header>
+	<div class="logo">
+	<a href="index.html">Bookshelf</a>
+	</div>
+	<ul>
+		<li><a href="listBooks.do">List Books</a></li>
+		<li><a href="newBook.jsp">Add Book</a></li>
+		<li><a href="deleteBook.jsp">Delete Book</a></li>
+		<li><a href="listBooks.do">Edit Books</a></li>
+		
+		
+	</ul>	
+	</header>
+
 	<h4>All Books</h4>
 	<c:choose>
 		<c:when test="${! empty book}">
@@ -26,6 +40,10 @@
 			<form action="editBook.do" method=GET>
 			<input type="hidden" name="title" value="${book.title}">
 			<input type="submit" value="edit">
+			</form>
+			<form action="deleteBook.do" method=GET>
+			<input type="hidden" name="title" value="${book.title}">
+			<input type="submit" value="delete book now">
 			</form>
 			</c:forEach>
 		</c:when>

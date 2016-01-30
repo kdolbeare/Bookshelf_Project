@@ -49,53 +49,55 @@ public class BookshelfController
 		mv.addObject("book",bookDAO.getBookByTitle(t));
 		return mv;
 	}
+	//trying to add a drop down menu...not working
+	@RequestMapping(path="newBook.do", method=RequestMethod.GET)
+	public ModelAndView newBook()
+	{
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("newBook.jsp");
+		mv.addObject("book", bookDAO.getAllBooks());
+		System.out.println(bookDAO.getAllBooks());
+		return mv;
+	}
 	@RequestMapping(path="newBook.do", method=RequestMethod.POST)
-	public String newBook (Book book, Author author, @ModelAttribute("catalog") TreeSet<Book> list)
+	public ModelAndView newBook (Book book, Author author, @ModelAttribute("catalog") TreeSet<Book> list)
 	{
 		book.setAuthor(author);
 		author.setBook(book);
 		bookDAO.addBook(book);
 		list.add(book);
-		//ModelAndView mv = new ModelAndView();
-		//mv.setViewName("book.jsp");
-		return "book.jsp";
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("book.jsp");
+		return mv;
 	}
 	@RequestMapping(path="deleteBook.do", params="title", method=RequestMethod.GET)
 	public String deleteBook (@RequestParam("title") String t,@ModelAttribute("catalog") TreeSet<Book> list)
 	{
-		//System.out.println(bookDAO.getBookByTitle(t));
+		try{
 		list.remove(bookDAO.getOneBookByTitle(t));
 		bookDAO.deleteBook(bookDAO.getOneBookByTitle(t));
+		}catch(Exception e)
+		{
+			System.out.println("book not found: " + e);
+		}
 		return "deleteBook.jsp";
 	}
 	@RequestMapping(path="editBook.do", params="title", method=RequestMethod.GET)
 	public ModelAndView editBook (@RequestParam("title") String t)
 	{
 		Book b = (bookDAO.getOneBookByTitle(t));
-//		Book b = new Book("Test");
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("editBook.jsp");
 		mv.addObject("book", b);
 		return mv;
 	}
-	//need to add another method to updateBook from the edit page
 	@RequestMapping(path="editBook.do", method=RequestMethod.POST)
 	public ModelAndView updateBook (@RequestParam("originalTitle") String o, @RequestParam("title") String t, @RequestParam("firstName") String f, 
 			@RequestParam("lastName") String l, @RequestParam("numISBN") String n, @ModelAttribute("catalog") TreeSet<Book> list)
 	{	
-		//System.out.println(t + f+ l + n);
-		
-//		b.setTitle(t);
-//		b.setNumISBN(n);
-//		Author a = new Author(f,l);
-//		b.setAuthor(a);		
-//		bookDAO.addBook(b);
-//		list.add(b);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("oneBook.jsp");
 		mv.addObject("book", bookDAO.editBook(o, t,f,l, n));
-		return mv;
-	
-		
+		return mv;		
 	}
 }
