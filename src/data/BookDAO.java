@@ -10,4 +10,5 @@ public interface BookDAO
 	public void addBook(Book book);
 	public void deleteBook(Book book);
 	public Book getOneBookByTitle(String title);
+	public Book editBook(String original, String title, String firstName, String lastName, String numISBN);
 }

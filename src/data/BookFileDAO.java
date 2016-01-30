@@ -64,6 +64,26 @@ public class BookFileDAO implements BookDAO
 		}
 		return b;
 	}
+	
+	@Override
+	public Book editBook (String original, String title, String firstName, String lastName, String numISBN)
+	{
+		for (Book book : books)
+		{
+			if(book.getTitle().trim().equalsIgnoreCase(original.trim()))
+			//if (book.getTitle().toLowerCase().contains(title.toLowerCase().trim()))
+			{
+				book.setTitle(title);
+				book.setNumISBN(numISBN);
+				Author a = new Author (firstName, lastName);
+				book.setAuthor(a);
+				return book;
+			}
+					
+				
+		}return null;
+	}
+	
 	@Override
 	public Book getOneBookByTitle(String title)
 	{
@@ -94,7 +114,6 @@ public class BookFileDAO implements BookDAO
 			books.remove(book);
 		else {
 			//something?
-		}
-			
+		}			
 	}
 }

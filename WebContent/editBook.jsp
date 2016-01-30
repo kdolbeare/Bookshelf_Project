@@ -14,6 +14,7 @@
 		<table>
 			<tr>
 				<td>Title: <input name="title" value="${book.title}"/></td>
+				<td>Title: <input type="hidden" name="originalTitle" value="${book.title}"/></td>
 			</tr>
 			<tr>
 				<td>Author's first name:<input name="firstName" value="${book.author.firstName}" /></td>

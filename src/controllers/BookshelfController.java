@@ -80,20 +80,20 @@ public class BookshelfController
 	}
 	//need to add another method to updateBook from the edit page
 	@RequestMapping(path="editBook.do", method=RequestMethod.POST)
-	public ModelAndView updateBook (@RequestParam("title") String t, @RequestParam("firstName") String f, 
+	public ModelAndView updateBook (@RequestParam("originalTitle") String o, @RequestParam("title") String t, @RequestParam("firstName") String f, 
 			@RequestParam("lastName") String l, @RequestParam("numISBN") String n, @ModelAttribute("catalog") TreeSet<Book> list)
 	{	
 		//System.out.println(t + f+ l + n);
-		Book b = new Book();
-		b.setTitle(t);
-		b.setNumISBN(n);
-		Author a = new Author(f,l);
-		b.setAuthor(a);		
-		bookDAO.addBook(b);
-		list.add(b);
+		
+//		b.setTitle(t);
+//		b.setNumISBN(n);
+//		Author a = new Author(f,l);
+//		b.setAuthor(a);		
+//		bookDAO.addBook(b);
+//		list.add(b);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("oneBook.jsp");
-		mv.addObject("book", b);
+		mv.addObject("book", bookDAO.editBook(o, t,f,l, n));
 		return mv;
 	
 		
