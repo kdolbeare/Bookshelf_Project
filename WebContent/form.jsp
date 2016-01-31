@@ -50,6 +50,7 @@
 						</tr>
 					</tbody>
 				</table>
+				<div class="buttons">
 				<form action="editBook.do" method=GET>
 					<input type="hidden" name="title" value="${book.title}"> <input
 						type="submit" value="edit">
@@ -58,6 +59,7 @@
 					<input type="hidden" name="title" value="${book.title}"> <input
 						type="submit" value="delete book now">
 				</form>
+				</div>
 			</c:forEach>
 		</c:when>
 		<c:otherwise>

@@ -28,7 +28,8 @@
 	</form><br>
 	<h3>Edit a Book</h3>
 	<form action="editBook.do" method="POST">
-		<table>
+		<table class = "edit">
+			<tbody>
 			<tr>
 				<td>Title: <input name="title" value="${book.title}"/></td>
 				<td><input type="hidden" name="originalTitle" value="${book.title}"/></td>
@@ -42,6 +43,7 @@
 			<tr>
 				<td>ISBN:<input name="numISBN" value="${book.numISBN}"/></td>
 			</tr>
+			</tbody>
 		</table>
 		<input type="submit" value="Update Book" />
 	</form>

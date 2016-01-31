@@ -9,6 +9,7 @@ header {
     font-style: italic;
     float: left;
     padding: 15px;
+
 }
 .search {
   float: right;
@@ -16,13 +17,15 @@ header {
 
 header a {
   text-decoration: none;
+  color: #003366;
 }
 
 body {
+  background-image: url("library.jpg");
   color: #003366;
   padding-left: 10px;
   padding-right: 10px;
-  /*background-image: url(test.jpg);*/
+
 }
 ul li a {
   text-decoration: none;
@@ -37,11 +40,22 @@ ul li {
   font-size: 1.25em;
 }
 
+input[type=text] {
+    width: 200px;
+  }
+
+input[type=submit] {
+    margin-left: 20px;
+    margin-bottom: 10px;
+    display: block;
+  }
+
 table {
   border: 1px solid #003366;
   text-align: center;
   width: 25%;
-  padding-top: 30px;
+  margin-bottom: 10px;
+  margin-top: 50px;
 }
 td {
   border: 1px solid #003366;
@@ -51,4 +65,11 @@ td {
 th{
   column-span: all;
   border: 1px solid #003366;
+}
+.edit{
+  border-style: none;
+  width: 25%;
+}
+.edit td {
+  border-style: none;
 }
