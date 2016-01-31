@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="normalize.css">
+<link rel="stylesheet" href="book.css">
 <meta charset="UTF-8">
 <title>Bookshelf</title>
 </head>
 <body>
 	<header>
-	<div class="logo">
-	<a href="index.html">Bookshelf</a>
-	</div>
+		<div class="logo">
+			<a href="index.html">Bookshelf</a>
+		</div>
+	</header>
 	<ul>
 		<li><a href="listBooks.do">List Books</a></li>
 		<li><a href="newBook.jsp">Add Book</a></li>
 		<li><a href="deleteBook.jsp">Delete Book</a></li>
 		<!-- <li><a href="editBook.do?title=A+Beautiful+Mind">Edit Book</a></li> -->
-		<li><a href="listBooks.do">Edit Books</a></li>	
+		<li><a href="listBooks.do">Edit Book</a></li>	
 	</ul>		
-	<form action="getByTitle.do" method="GET">
+	<form class="search" action="getByTitle.do" method="GET">
 		 <input type="text" placeholder="Enter Title" name="title"> 
 		 <button type="submit" value="submit" name="submit">Search Shelf</button>
 	</form>	
-	</header>
+	<!-- <img ID="pic" src = "library.jpg"/> -->
 </body>
 </html>

@@ -5,6 +5,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="stylesheet" href="normalize.css">
+<link rel="stylesheet" href="book.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Edit Book</title>
 </head>
@@ -13,13 +15,17 @@
 <div class="logo">
 	<a href="index.html">Bookshelf</a>
 	</div>
+</header>
 	<ul>
 		<li><a href="listBooks.do">List Books</a></li>
 		<li><a href="newBook.jsp">Add Book</a></li>
 		<li><a href="deleteBook.jsp">Delete Book</a></li>
-		<li><a href="listBooks.do">Edit Books</a></li>		
-	</ul>	
-	</header>
+		<li><a href="listBooks.do">Edit Book</a></li>		
+	</ul><br>	
+	<form class="search" action="getByTitle.do" method="GET">
+		 <input type="text" placeholder="Enter Title" name="title"> 
+		 <button type="submit" value="submit" name="submit">Search Shelf</button>
+	</form><br>
 	<h3>Edit a Book</h3>
 	<form action="editBook.do" method="POST">
 		<table>
