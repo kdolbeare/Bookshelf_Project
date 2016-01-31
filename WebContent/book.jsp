@@ -15,17 +15,15 @@
 	<div class="logo">
 		<a href="index.html">Bookshelf</a>
 	</div>
-	</header>
 	<ul>
-		<li><a href="listBooks.do">List Books</a></li>
+		<li><a href="deleteBook.jsp">Delete Book</a></li>	
 		<li><a href="newBook.jsp">Add Book</a></li>
-		<li><a href="deleteBook.jsp">Delete Book</a></li>
-		<li><a href="listBooks.do">Edit Books</a></li>
-	</ul><br>
+		<li><a href="listBooks.do">List / Edit Books</a></li>	
+	</ul>
+	</header>
 	<form class="search" action="getByTitle.do" method="GET">
 		<input type="text" placeholder="Enter Title" name="title">
-		<button type="submit" value="submit" name="submit">Search
-			Shelf</button>
+		<button type="submit" value="submit" name="submit">Search</button>
 	</form>
 	<c:choose>
 		<c:when test="${! empty book}">
@@ -50,12 +48,23 @@
 						</tr>
 					</tbody>
 				</table>
+							<div class="editbutton">
+				<form action="editBook.do" method=GET>
+					<input type="hidden" name="title" value="${book.title}"> <input
+						type="submit" value="edit">
+				</form></div>
+				<form action="deleteBook.do" method=GET>
+					<input type="hidden" name="title" value="${book.title}"> <input
+						type="submit" value="delete">
+				</form>
 			</c:forEach>
 		</c:when>
 		<c:otherwise>
-			<p>No book found</p>
+			<p>Book not found</p>
 		</c:otherwise>
+
 	</c:choose>
+
 
 </body>
 </html>

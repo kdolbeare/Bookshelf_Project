@@ -13,21 +13,20 @@
 <div class="logo">
 	<a href="index.html">Bookshelf</a>
 	</div>
-</header>
 	<ul>
-		<li><a href="listBooks.do">List Books</a></li>
+		<li><a href="deleteBook.jsp">Delete Book</a></li>	
 		<li><a href="newBook.jsp">Add Book</a></li>
-		<li><a href="deleteBook.jsp">Delete Book</a></li>
-		<li><a href="listBooks.do">Edit Book</a></li>		
-	</ul><br>
+		<li><a href="listBooks.do">List / Edit Books</a></li>			
+	</ul>
+	</header>
 	<form class="search" action="getByTitle.do" method="GET">
 		 <input type="text" placeholder="Enter Title" name="title"> 
-		 <button type="submit" value="submit" name="submit">Search Shelf</button>
+		 <button type="submit" value="submit" name="submit">Search</button>
 	</form><br>
 	<h3>Delete a Book</h3>
 	<form action="deleteBook.do" method="GET">
 		<input type="text" name ="title" placeholder = "title to delete"/>
-		<input type="submit" value="Delete Book" />
+		<input type="submit" value="Delete" />
 	</form>
 
 </body>
