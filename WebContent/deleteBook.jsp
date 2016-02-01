@@ -14,8 +14,7 @@
 	<a href="index.html">Bookshelf</a>
 	</div>
 	<ul>
-		<li><a href="deleteBook.jsp">Delete Book</a></li>	
-		<li><a href="newBook.jsp">Add Book</a></li>
+		<li><a href="newBook.do">Add Book</a></li>
 		<li><a href="listBooks.do">List / Edit Books</a></li>			
 	</ul>
 	</header>
@@ -23,11 +22,12 @@
 		 <input type="text" placeholder="Enter Title" name="title"> 
 		 <button type="submit" value="submit" name="submit">Search</button>
 	</form><br>
-	<h3>Delete a Book</h3>
+	<p>Book Deleted</p>
+	<!-- <h3>Delete a Book</h3>
 	<form action="deleteBook.do" method="GET">
 		<input type="text" name ="title" placeholder = "title to delete"/>
 		<input type="submit" value="Delete" />
-	</form>
+	</form> -->
 
 </body>
 </html>

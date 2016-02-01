@@ -57,7 +57,6 @@ ul li a {
   width: 150px;
   height: 15px;
   text-align: center;
-  margin-left: 50px;
 }
 
 ul li {
@@ -65,6 +64,7 @@ ul li {
   float: right;
   font-size: 1.25em;
   margin-top: 40px;
+  margin-right: 100px;
 }
 
 input[type=text] {
@@ -85,6 +85,13 @@ input[type=submit] {
     height:auto;
     text-align: center;
   }
+.drop {
+  margin-left: 10px;
+  width: 200px;
+  height: 35px;
+  padding: 10px;
+  background: #e0e0d1;
+}
 .editbutton {
   float:left;
   margin-right: 10px;

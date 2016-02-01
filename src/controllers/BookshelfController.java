@@ -1,7 +1,6 @@
 package controllers;
 
 
-import java.util.List;
 import java.util.TreeSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,14 +48,13 @@ public class BookshelfController
 		mv.addObject("book",bookDAO.getBookByTitle(t));
 		return mv;
 	}
-	//trying to add a drop down menu...not working
+	//for the drop down list
 	@RequestMapping(path="newBook.do", method=RequestMethod.GET)
 	public ModelAndView newBook()
 	{
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("newBook.jsp");
 		mv.addObject("book", bookDAO.getAllBooks());
-		System.out.println(bookDAO.getAllBooks());
 		return mv;
 	}
 	@RequestMapping(path="newBook.do", method=RequestMethod.POST)
@@ -65,39 +63,38 @@ public class BookshelfController
 		book.setAuthor(author);
 		author.setBook(book);
 		bookDAO.addBook(book);
-		list.add(book);
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("book.jsp");
+		mv.setViewName("oneBook.jsp");
 		return mv;
 	}
-	@RequestMapping(path="deleteBook.do", params="title", method=RequestMethod.GET)
-	public String deleteBook (@RequestParam("title") String t,@ModelAttribute("catalog") TreeSet<Book> list)
+	@RequestMapping(path="deleteBook.do", params="numISBN", method=RequestMethod.GET)
+	public String deleteBook (@RequestParam("numISBN") String n,@ModelAttribute("catalog") TreeSet<Book> list)
 	{
 		try{
-		list.remove(bookDAO.getOneBookByTitle(t));
-		bookDAO.deleteBook(bookDAO.getOneBookByTitle(t));
+		list.remove(bookDAO.getOneBookByNum(n));
+		bookDAO.deleteBook(bookDAO.getOneBookByNum(n));
 		}catch(Exception e)
 		{
 			System.out.println("book not found: " + e);
 		}
 		return "deleteBook.jsp";
 	}
-	@RequestMapping(path="editBook.do", params="title", method=RequestMethod.GET)
-	public ModelAndView editBook (@RequestParam("title") String t)
+	@RequestMapping(path="editBook.do", params="numISBN", method=RequestMethod.GET)
+	public ModelAndView editBook (@RequestParam("numISBN") String n)
 	{
-		Book b = (bookDAO.getOneBookByTitle(t));
+		Book b = (bookDAO.getOneBookByNum(n));
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("editBook.jsp");
 		mv.addObject("book", b);
 		return mv;
 	}
 	@RequestMapping(path="editBook.do", method=RequestMethod.POST)
-	public ModelAndView updateBook (@RequestParam("originalTitle") String o, @RequestParam("title") String t, @RequestParam("firstName") String f, 
+	public ModelAndView updateBook (@RequestParam("title") String t, @RequestParam("firstName") String f, 
 			@RequestParam("lastName") String l, @RequestParam("numISBN") String n, @ModelAttribute("catalog") TreeSet<Book> list)
 	{	
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("oneBook.jsp");
-		mv.addObject("book", bookDAO.editBook(o, t,f,l, n));
+		mv.addObject("book", bookDAO.editBook(t,f,l, n));
 		return mv;		
 	}
 }

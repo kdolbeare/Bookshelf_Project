@@ -4,12 +4,10 @@ public class Author
 {
 	private String firstName;
 	private String lastName;
-	private String image;
 	private Book book;
 	
 	public Author()
-	{
-		
+	{		
 	}
 	
 	public Author(String firstName, String lastName)
@@ -34,14 +32,6 @@ public class Author
 	{
 		this.lastName = lastName;
 	}
-	public String getImage()
-	{
-		return image;
-	}
-	public void setImage(String image)
-	{
-		this.image = image;
-	}
 	public Book getBook()
 	{
 		return book;
@@ -50,24 +40,11 @@ public class Author
 	{
 		this.book = book;
 	}
-
 	@Override
 	public String toString()
 	{
 		return firstName + " " + lastName;
 	}
-
-//	@Override
-//	public int hashCode()
-//	{
-//		final int prime = 31;
-//		int result = 1;
-//		result = prime * result + ((book == null) ? 0 : book.hashCode());
-//		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
-//		result = prime * result + ((image == null) ? 0 : image.hashCode());
-//		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
-//		return result;
-//	}
 
 	@Override
 	public boolean equals(Object obj)
@@ -90,12 +67,6 @@ public class Author
 			if (other.firstName != null)
 				return false;
 		} else if (!firstName.equals(other.firstName))
-			return false;
-		if (image == null)
-		{
-			if (other.image != null)
-				return false;
-		} else if (!image.equals(other.image))
 			return false;
 		if (lastName == null)
 		{

@@ -15,9 +15,8 @@
 	<div class="logo">
 		<a href="index.html">Bookshelf</a>
 	</div>
-	<ul>
-		<li><a href="deleteBook.jsp">Delete Book</a></li>	
-		<li><a href="newBook.jsp">Add Book</a></li>
+	<ul>	
+		<li><a href="newBook.do">Add Book</a></li>
 		<li><a href="listBooks.do">List / Edit Books</a></li>	
 	</ul>
 	</header>
@@ -27,11 +26,9 @@
 	</form><br>
 	<h3>Add a New Book</h3>
 	<form action="newBook.do" method="POST">
-		<select name="title">
-
+		<select class="drop" name="category">
 			<c:forEach var="book" items="${book}">
-				<option value="test">selection</option>
-				<option value="${book.title}">${book.category}</option>
+				<option value="${book.category}">${book.category}</option>
 			</c:forEach>
 		</select><br> <input type="text" name="title" placeholder="Title"><br />
 		<input type="text" name="firstName" placeholder="First Name" /><br />

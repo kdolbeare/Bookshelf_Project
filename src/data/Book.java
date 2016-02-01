@@ -1,19 +1,17 @@
 package data;
 
-import java.util.Comparator;
-
 public class Book implements Comparable<Book>
 {
 	private String category;
 	private String title;
 	private Author author;
 	private String numISBN;
+	//did not use these, but may add later:
 	private String image;
 	private String infoLink;
 	
 	public Book ()
-	{
-		
+	{		
 	}
 	public Book (String title)
 	{
@@ -23,8 +21,7 @@ public class Book implements Comparable<Book>
 	{
 		this.title=title;
 		this.author=author;
-	}
-	
+	}	
 	public String getCategory()
 	{
 		return category;
@@ -80,19 +77,6 @@ public class Book implements Comparable<Book>
 	{
 		this.author = author;
 	}
-//	@Override
-//	public int hashCode()
-//	{
-//		final int prime = 31;
-//		int result = 1;
-//		result = prime * result + ((author == null) ? 0 : author.hashCode());
-//		result = prime * result + ((category == null) ? 0 : category.hashCode());
-//		result = prime * result + ((image == null) ? 0 : image.hashCode());
-//		result = prime * result + ((infoLink == null) ? 0 : infoLink.hashCode());
-//		result = prime * result + ((numISBN == null) ? 0 : numISBN.hashCode());
-//		result = prime * result + ((title == null) ? 0 : title.hashCode());
-//		return result;
-//	}
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -141,20 +125,13 @@ public class Book implements Comparable<Book>
 			return false;
 		return true;
 	}
-//	@Override
-//	public int compare(Book o1, Book o2)
-//	{
-//		// TODO Auto-generated method stub
-//		return 0;
-//	}
-
 	@Override
 	public int compareTo(Book o)
 	{
-		int titleDiff = title.compareToIgnoreCase(o.title);
-		if(titleDiff != 0)
+		int isbnDiff = numISBN.compareTo(o.numISBN);
+		if(isbnDiff != 0)
 		{
-			return titleDiff;
+			return isbnDiff;
 		}
 		else return 0;
 	}

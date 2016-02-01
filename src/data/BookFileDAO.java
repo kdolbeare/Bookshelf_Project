@@ -3,8 +3,6 @@ package data;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.TreeSet;
 
 import javax.annotation.PostConstruct;
@@ -22,8 +20,7 @@ public class BookFileDAO implements BookDAO
 	
 	public BookFileDAO () {
 		
-	}
-	
+	}	
 	@PostConstruct
 	public void loadBooksFromFile()
 	{
@@ -47,61 +44,48 @@ public class BookFileDAO implements BookDAO
 		{
 			System.out.println(e);
 		}
-		System.out.println(books.size());
 	}
-	
-	
 	@Override
 	public TreeSet<Book> getBookByTitle(String title)
 	{
 		TreeSet<Book> b = new TreeSet<>();
 		for (Book book : books)
 		{
-//			if(book.getTitle().trim().equalsIgnoreCase(title.trim()))
 			if (book.getTitle().toLowerCase().contains(title.toLowerCase().trim()))
-				b.add(book);
-				
+				b.add(book);				
 		}
 		return b;
-	}
-	
+	}	
 	@Override
-	public Book editBook (String original, String title, String firstName, String lastName, String numISBN)
+	public Book editBook (String title, String firstName, String lastName, String numISBN)
 	{
 		for (Book book : books)
 		{
-			if(book.getTitle().trim().equalsIgnoreCase(original.trim()))
-			//if (book.getTitle().toLowerCase().contains(title.toLowerCase().trim()))
+			if(book.getNumISBN().trim().equals(numISBN.trim()))
 			{
 				book.setTitle(title);
 				book.setNumISBN(numISBN);
 				Author a = new Author (firstName, lastName);
 				book.setAuthor(a);
 				return book;
-			}
-					
-				
+			}				
 		}return null;
-	}
-	
+	}	
 	@Override
-	public Book getOneBookByTitle(String title)
+	public Book getOneBookByNum(String numISBN)
 	{
 		for (Book book : books)
-	{
-//		if(book.getTitle().trim().equalsIgnoreCase(title.trim()))
-		if (book.getTitle().toLowerCase().contains(title.toLowerCase().trim()))
-			return book;			
+		{
+			if (book.getNumISBN().contains(numISBN.trim()))
+				return book;			
+		}
+			return null;
 	}
-		return null;
-	}
-
 	@Override
 	public TreeSet<Book> getAllBooks()
 	{
 		return books;
-	}
-	
+	}	
 	@Override
 	public void addBook(Book book)
 	{

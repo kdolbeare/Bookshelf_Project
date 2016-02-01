@@ -15,9 +15,8 @@
 	<div class="logo">
 		<a href="index.html">Bookshelf</a>
 	</div>
-	<ul>
-		<li><a href="deleteBook.jsp">Delete Book</a></li>	
-		<li><a href="newBook.jsp">Add Book</a></li>
+	<ul>	
+		<li><a href="newBook.do">Add Book</a></li>
 		<li><a href="listBooks.do">List / Edit Books</a></li>	
 	</ul>
 	</header>
@@ -38,7 +37,6 @@
 							<td>Category:</td>
 							<td>${book.category}</td>
 						</tr>
-						<%-- <tr><td>Title:</td><td>${book.title}</td></tr> --%>
 						<tr>
 							<td>Author:</td>
 							<td>${book.author}</td>
@@ -51,11 +49,11 @@
 				</table>
 				<div class="editbutton">
 				<form action="editBook.do" method=GET>
-					<input type="hidden" name="title" value="${book.title}"> <input
+					<input type="hidden" name="numISBN" value="${book.numISBN}"> <input
 						type="submit" value="edit">
 				</form></div>
 				<form action="deleteBook.do" method=GET>
-					<input type="hidden" name="title" value="${book.title}"> <input
+					<input type="hidden" name="numISBN" value="${book.numISBN}"> <input
 						type="submit" value="delete">
 				</form>
 			</c:forEach>
