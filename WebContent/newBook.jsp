@@ -13,7 +13,7 @@
 <body>
 	<header>
 	<div class="logo">
-		<a href="index.html">Bookshelf</a>
+		<a href="index.jsp">Bookshelf</a>
 	</div>
 	<ul>	
 		<li><a href="newBook.do">Add Book</a></li>

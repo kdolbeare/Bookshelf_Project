@@ -9,7 +9,7 @@
 <body>
 	<header>
 		<div class="logo">
-			<a href="index.html">Bookshelf</a>
+			<a href="index.jsp">Bookshelf</a>
 		</div>
 	<ul>		
 		<!-- keeping for future reference: <li><a href="editBook.do?title=A+Beautiful+Mind">Edit Book</a></li> -->	
